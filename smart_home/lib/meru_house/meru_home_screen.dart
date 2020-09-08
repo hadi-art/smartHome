@@ -180,6 +180,9 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
               if(txt == 'Naufal'){
                 imagePath1 = "assets/meru_house/naufal.PNG";
               }
+
+
+
               setState(() {
                 categoryType = categoryTypeData;
               });
