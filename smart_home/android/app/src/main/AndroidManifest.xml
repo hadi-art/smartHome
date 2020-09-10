@@ -12,6 +12,7 @@
     <application
         android:name="io.flutter.app.FlutterApplication"
         android:label="smart_home"
+        tools:replace="android:label"
         android:icon="@mipmap/launcher_icon"
         android:usesCleartextTraffic="true">
         <activity
