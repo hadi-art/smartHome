@@ -4,6 +4,7 @@ import 'package:smart_home/meru_house/popular_course_list_view.dart';
 import 'package:smart_home/main.dart';
 import 'package:flutter/material.dart';
 import 'meru_house_app_theme.dart';
+import 'package:smart_home/meru_house/intercom.dart';
 
 class MeruHouseHomeScreen extends StatefulWidget {
   @override
@@ -15,6 +16,13 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
   String imagePath1 = "assets/meru_house/hadi.PNG";
 
   @override
+  Widget screenView;
+
+  void initState() {
+    screenView = IntercomScreen();
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return Container(
       color: DesignCourseAppTheme.nearlyWhite,
@@ -136,7 +144,7 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
     Navigator.push<dynamic>(
       context,
       MaterialPageRoute<dynamic>(
-        builder: (BuildContext context) => CourseInfoScreen(),
+        builder: (BuildContext context) => IntercomScreen(),
       ),
     );
   }
@@ -180,11 +188,13 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
               if(txt == 'Naufal'){
                 imagePath1 = "assets/meru_house/naufal.PNG";
               }
+              screenView = IntercomScreen();
 
 
 
               setState(() {
                 categoryType = categoryTypeData;
+
               });
             },
             child: Padding(
