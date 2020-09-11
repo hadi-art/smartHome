@@ -1,5 +1,6 @@
 import 'package:smart_home/app_theme.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_home/main.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:jitsi_meet/jitsi_meet.dart';
@@ -46,7 +47,7 @@ class _IntercomScreenState extends State<IntercomScreen> {
     );
   }
 
-  _joinMeeting() async {
+  _joinMeeting(){
     try {
       var options = JitsiMeetingOptions()
         ..room = "wsh1670wla4883" // Required, spaces will be trimmed
@@ -58,8 +59,9 @@ class _IntercomScreenState extends State<IntercomScreen> {
         ..audioMuted = false
         ..videoMuted = false;
 
-      return await JitsiMeet.joinMeeting(options);
+      return JitsiMeet.joinMeeting(options);
     } catch (error) {
+      Navigator.pop(context);
       debugPrint("error: $error");
     }
   }
