@@ -27,6 +27,7 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
     return Container(
       color: DesignCourseAppTheme.nearlyWhite,
       child: Scaffold(
+        appBar: AppBar(title: const Text('Meru House'),),
         backgroundColor: Colors.transparent,
         body: Column(
           children: <Widget>[
@@ -40,10 +41,10 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
                   height: MediaQuery.of(context).size.height,
                   child: Column(
                     children: <Widget>[
-                      getSearchBarUI(),
-                      getCategoryUI(),
+//                      getSearchBarUI(),
+//                      getCategoryUI(),
                       Flexible(
-                        child: getPopularCourseUI(),
+                        child: getModuleUI(),
                       ),
                     ],
                   ),
@@ -111,7 +112,7 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
     );
   }
 
-  Widget getPopularCourseUI() {
+  Widget getModuleUI() {
     return Padding(
       padding: const EdgeInsets.only(top: 8.0, left: 18, right: 16),
       child: Column(
@@ -119,7 +120,7 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           Text(
-            'Popular Course',
+            'Module',
             textAlign: TextAlign.left,
             style: TextStyle(
               fontWeight: FontWeight.w600,
@@ -141,12 +142,12 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
   }
 
   void moveTo() {
-    Navigator.push<dynamic>(
-      context,
-      MaterialPageRoute<dynamic>(
-        builder: (BuildContext context) => IntercomScreen(),
-      ),
-    );
+//    Navigator.push<dynamic>(
+//      context,
+//      MaterialPageRoute<dynamic>(
+//        builder: (BuildContext context) => IntercomScreen(),
+//      ),
+//    );
   }
 
   Widget getButtonUI(CategoryType categoryTypeData, bool isSelected) {
@@ -314,7 +315,7 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
                   ),
                 ),
                 Text(
-                  'My House',
+                  'Meru House',
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,

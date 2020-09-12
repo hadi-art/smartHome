@@ -1,7 +1,10 @@
-import 'package:smart_home/design_course/design_course_app_theme.dart';
-import 'package:smart_home/design_course/models/category.dart';
+//import 'dart:js';
+
+import 'package:smart_home/meru_house/meru_house_app_theme.dart';
+import 'package:smart_home/meru_house/models/category.dart';
 import 'package:smart_home/main.dart';
 import 'package:flutter/material.dart';
+import 'package:smart_home/meru_house/intercom.dart';
 
 class PopularCourseListView extends StatefulWidget {
   const PopularCourseListView({Key key, this.callBack}) : super(key: key);
@@ -104,6 +107,21 @@ class CategoryView extends StatelessWidget {
             child: InkWell(
               splashColor: Colors.transparent,
               onTap: () {
+                print(category.link);
+                if(category.link == 'intercom.dart'){
+                  Navigator.push<dynamic>(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) => IntercomScreen(),
+                    ),
+                  );
+                }
+                else{
+                  // set up the AlertDialog
+                  print('sssss');
+                  _showDialog(context,category.link);
+                }
+
                 callback();
               },
               child: SizedBox(
@@ -157,44 +175,46 @@ class CategoryView extends StatelessWidget {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.center,
                                               children: <Widget>[
-                                                Text(
-                                                  '${category.lessonCount} lesson',
-                                                  textAlign: TextAlign.left,
-                                                  style: TextStyle(
-                                                    fontWeight: FontWeight.w200,
-                                                    fontSize: 12,
-                                                    letterSpacing: 0.27,
-                                                    color: DesignCourseAppTheme
-                                                        .grey,
-                                                  ),
+                                              Text(
+//                                                  '${category.lessonCount} retyu',
+//                                                  textAlign: TextAlign.left,
+//                                                  style: TextStyle(
+//                                                    fontWeight: FontWeight.w200,
+//                                                    fontSize: 12,
+//                                                    letterSpacing: 0.27,
+//                                                    color: DesignCourseAppTheme
+//                                                        .grey,
+//                                                  ),
+                                            '-'
                                                 ),
-                                                Container(
-                                                  child: Row(
-                                                    children: <Widget>[
-                                                      Text(
-                                                        '${category.rating}',
-                                                        textAlign:
-                                                            TextAlign.left,
-                                                        style: TextStyle(
-                                                          fontWeight:
-                                                              FontWeight.w200,
-                                                          fontSize: 18,
-                                                          letterSpacing: 0.27,
-                                                          color:
-                                                              DesignCourseAppTheme
-                                                                  .grey,
-                                                        ),
-                                                      ),
-                                                      Icon(
-                                                        Icons.star,
-                                                        color:
-                                                            DesignCourseAppTheme
-                                                                .nearlyBlue,
-                                                        size: 20,
-                                                      ),
-                                                    ],
-                                                  ),
-                                                )
+//                                                Container(
+//                                                  child: Row(
+//                                                    children: <Widget>[
+//                                                      Text(
+////                                                        '${category.rating}',
+//                                                      '-',
+//                                                        textAlign:
+//                                                            TextAlign.left,
+//                                                        style: TextStyle(
+//                                                          fontWeight:
+//                                                              FontWeight.w200,
+//                                                          fontSize: 18,
+//                                                          letterSpacing: 0.27,
+//                                                          color:
+//                                                              DesignCourseAppTheme
+//                                                                  .grey,
+//                                                        ),
+//                                                      ),
+//                                                      Icon(
+//                                                        Icons.star,
+//                                                        color:
+//                                                            DesignCourseAppTheme
+//                                                                .nearlyBlue,
+//                                                        size: 20,
+//                                                      ),
+//                                                    ],
+//                                                  ),
+//                                                )
                                               ],
                                             ),
                                           ),
@@ -250,4 +270,32 @@ class CategoryView extends StatelessWidget {
       },
     );
   }
+
+
+  void _showDialog(context,category) {
+    // flutter defined function
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        // return object of type Dialog
+        return AlertDialog(
+          title: new Text("Feature is not ready"),
+          content: new Text(category + " is still in developement"),
+          actions: <Widget>[
+            // usually buttons at the bottom of the dialog
+            new FlatButton(
+              child: new Text("Close"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
+
+
+
 }
