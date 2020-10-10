@@ -5,6 +5,7 @@ import 'package:smart_home/meru_house/models/category.dart';
 import 'package:smart_home/main.dart';
 import 'package:flutter/material.dart';
 import 'package:smart_home/meru_house/intercom.dart';
+import 'package:smart_home/meru_house/cctv.dart';
 
 class PopularCourseListView extends StatefulWidget {
   const PopularCourseListView({Key key, this.callBack}) : super(key: key);
@@ -113,6 +114,14 @@ class CategoryView extends StatelessWidget {
                     context,
                     MaterialPageRoute<dynamic>(
                       builder: (BuildContext context) => IntercomScreen(),
+                    ),
+                  );
+                }
+                else if(category.link == 'cctv.dart'){
+                  Navigator.push<dynamic>(
+                    context,
+                    MaterialPageRoute<dynamic>(
+                      builder: (BuildContext context) => CctvScreen(),
                     ),
                   );
                 }

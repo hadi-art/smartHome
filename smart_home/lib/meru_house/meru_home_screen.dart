@@ -1,4 +1,5 @@
 import 'package:smart_home/meru_house/category_list_view.dart';
+import 'package:smart_home/meru_house/cctv.dart';
 import 'package:smart_home/meru_house/course_info_screen.dart';
 import 'package:smart_home/meru_house/popular_course_list_view.dart';
 import 'package:smart_home/main.dart';
@@ -20,6 +21,7 @@ class _MeruHouseHomeScreenState extends State<MeruHouseHomeScreen> {
 
   void initState() {
     screenView = IntercomScreen();
+    screenView = CctvScreen();
     super.initState();
   }
 

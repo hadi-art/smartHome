@@ -35,7 +35,9 @@ dependencies:
   webview_flutter: 0.3.21
   permission_handler: 3.3.0
   jitsi_meet: 0.4.0
-  google_sign_in: "^4.5.3"
+  google_sign_in: ^4.5.3
+#  http: ^0.12.2
+  http: 0.12.0+1
 
 dev_dependencies:
   flutter_test:
