@@ -1,6 +1,8 @@
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'dart:io';
+import 'response_data.dart';
 
 
 
@@ -9,13 +11,26 @@ const baseUrl = "https://jsonplaceholder.typicode.com";
 
 class API {
 
-  static Future<dynamic> getUsers() async {
+  static getUsers() async {
     var url = baseUrl + "/users";
     var responseJson;
-    final response = await http.get(url);
-    responseJson = json.decode(response.body.toString());
-    print('aaa');
-    return responseJson;
+    try {
+      final response = await http.get(url).timeout(const Duration(seconds: 5));
+      responseJson = ResponseData().data_response(response);
+      print('ssssss');
+      print(responseJson);
+      if(responseJson != false){
+        return response;
+      }
+      else{
+        print('failed to get data');
+        return false;
+      }
+
+    } on SocketException {
+//      throw FetchDataException('No Internet connection');
+      print("no internet");
+    }
   }
 
 

@@ -31,7 +31,7 @@ class _CctvScreenState extends State<CctvScreen> {
 
 
   _getUsers() {
-    API.getUsers2().then((response) {
+    API.getUsers().then((response) {
       setState(() {
         Iterable list = json.decode(response.body);
         users = list.map((model) => User.fromJson(model)).toList();
